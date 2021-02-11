@@ -7,7 +7,7 @@ class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
-      <div>
+      <div className="content">
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
         <LogOutButton className="log-in" />

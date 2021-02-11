@@ -7,9 +7,15 @@
 }
 
 .nav {
-  margin: 0 0 30px;
+  /* margin: 0 0 30px;
   background-color: #00acb0;
-  overflow: hidden;
+  overflow: hidden; */
+  position:fixed; /* <-- fixes the left panel to prevent from scrolling */
+  top:0;
+  left:0;
+  width:200px;
+  height:100%;
+  background-color: black;
 }
 
 .nav-link {

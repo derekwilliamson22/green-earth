@@ -6,7 +6,7 @@ import React from 'react';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
-  <div className="container">
+  <div className="content">
     <div>
       <p>This about page is for anyone to read!</p>
     </div>
