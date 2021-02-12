@@ -22,15 +22,37 @@ router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
 
-  const queryText = `INSERT INTO "user" (username, password)
-    VALUES ($1, $2) RETURNING id`;
+  const queryText = 
+    `
+    INSERT INTO "user" (username, password)
+    VALUES ($1, $2) RETURNING id
+    `;
   pool
     .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('User registration failed: ', err);
-      res.sendStatus(500);
-    });
+    .then(result => {
+      console.log('New user Id:', result.rows[0].id);
+      const createdUserId = result.rows[0].id
+      
+      const insertFarmNameAndUserIdQuery = 
+        `
+        INSERT INTO "farm" ("name", "user_id")
+        VALUES  ($1, $2);
+        `;
+      pool
+        .query(insertFarmNameAndUserIdQuery, [req.body.farm_name, createdUserId])
+        .then(result => {
+          res.sendStatus(201);
+        }).catch(err => {
+      
+          console.log(err);
+          res.sendStatus(500)
+        })
+
+    
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500)
+    })
 });
 
 // Handles login form authenticate/login POST

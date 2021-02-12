@@ -15,15 +15,15 @@
   left:0;
   width:175px;
   height:100%;
-  background-color: black;
+  background-color: rgb(64, 139, 54);
 }
 
 .nav-link {
   float: left;
   width: 150px;
+  background-color: rgb(64, 139, 54);
   color: #f2f2f2;
-  background-color: #00acb0;
-  text-align: center;
+  text-align: left;
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
@@ -36,6 +36,7 @@
 }
 
 .nav-link:hover {
-  background-color: #008183;
+  background-color: #1e5c1c;
+  text-decoration: underline;
 }
 
