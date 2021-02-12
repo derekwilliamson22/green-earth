@@ -23,10 +23,10 @@ router.post('/register', (req, res, next) => {
   const password = encryptLib.encryptPassword(req.body.password);
 
   const queryText = 
-    `
-    INSERT INTO "user" (username, password)
-    VALUES ($1, $2) RETURNING id
-    `;
+  `
+  INSERT INTO "user" (username, password)
+  VALUES ($1, $2) RETURNING id
+  `;
   pool
     .query(queryText, [username, password])
     .then(result => {
@@ -34,10 +34,10 @@ router.post('/register', (req, res, next) => {
       const createdUserId = result.rows[0].id
       
       const insertFarmNameAndUserIdQuery = 
-        `
-        INSERT INTO "farm" ("name", "user_id")
-        VALUES  ($1, $2);
-        `;
+      `
+      INSERT INTO "farm" ("name", "user_id")
+      VALUES  ($1, $2);
+      `;
       pool
         .query(insertFarmNameAndUserIdQuery, [req.body.farm_name, createdUserId])
         .then(result => {

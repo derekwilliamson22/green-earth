@@ -8,8 +8,15 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+  const userQuery = 
+  `
+  SELECT "user"."username", "farm"."name" AS "farm_name", "user"."id" FROM "user"
+  JOIN "farm" ON "user"."id" = "farm"."user_id"
+  WHERE "user"."id" = $1;
+  `;
   pool
-    .query('SELECT * FROM "user" WHERE id = $1', [id])
+    //.query(`SELECT * FROM "user" WHERE id = $1`, [id])
+    .query(userQuery, [id])
     .then((result) => {
       // Handle Errors
       const user = result && result.rows && result.rows[0];
