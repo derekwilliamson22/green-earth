@@ -22,4 +22,4 @@ const crops_sample =
     "Eggplant - green knight",
 ]
 
-export default crops_sample
+export default crops_sample;

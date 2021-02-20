@@ -13,7 +13,7 @@ import Nav from '../Nav/Nav';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import AboutPage from '../AboutPage/AboutPage';
+import About from '../About/About';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
@@ -42,7 +42,7 @@ class App extends Component {
               // shows AboutPage at all times (logged in or not)
               exact
               path="/about"
-              component={AboutPage}
+              component={About}
             />
 
             {/* For protected routes, the view could show one of several things on the same route.
