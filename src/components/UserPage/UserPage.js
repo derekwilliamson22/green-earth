@@ -5,12 +5,13 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 const UserPage = ({store}) => {
 
-  const {farm_name, username, id} = store.user
+  const {farm_name, username, id, farm_id} = store.user
   // this component doesn't do much to start, just renders some user info to the DOM
   return (
     <div className="content">
       <h1 id="welcome">Welcome to {farm_name}, {username}!</h1>
       <p>Your User ID is: {id}</p>
+      <p>Your farm ID is: {farm_id}</p>
       <LogOutButton className="log-in" />
     </div>
   );

@@ -15,11 +15,11 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import About from '../About/About';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import Seasons from '../Seasons/Seasons';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import CropsMain from '../CropsMain/CropsMain';
+import Crops from '../Crops/Crops';
 
 import './App.css';
 
@@ -31,7 +31,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -59,8 +58,8 @@ class App extends Component {
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
               exact
-              path="/info"
-              component={InfoPage}
+              path="/seasons"
+              component={Seasons}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
@@ -100,13 +99,13 @@ class App extends Component {
               // - else shows LandingPage at "/home"
               exact
               path="/crops"
-              component={CropsMain}
+              component={Crops}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-        </div>
+
       </Router>
     );
   }

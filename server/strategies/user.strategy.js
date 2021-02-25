@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
   const userQuery = 
   `
-  SELECT "user"."username", "farm"."name" AS "farm_name", "user"."id" FROM "user"
+  SELECT "user"."username", "farm"."name" AS "farm_name", "user"."id", "farm"."id" AS farm_id FROM "user"
   JOIN "farm" ON "user"."id" = "farm"."user_id"
   WHERE "user"."id" = $1;
   `;
